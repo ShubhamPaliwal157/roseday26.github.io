@@ -57,6 +57,24 @@ export default function Home() {
     setSparkles(sparkleData);
   }, []);
 
+  // Fallback: ensure content is visible if animations don't load
+  useEffect(() => {
+    // Small delay to ensure Framer Motion has a chance to animate
+    const timer = setTimeout(() => {
+      // Check if any content is still hidden and make it visible
+      const hiddenElements = document.querySelectorAll('[style*="opacity: 0"]');
+      if (hiddenElements.length > 0) {
+        hiddenElements.forEach((el) => {
+          if (el instanceof HTMLElement) {
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+          }
+        });
+      }
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* Background Effects */}

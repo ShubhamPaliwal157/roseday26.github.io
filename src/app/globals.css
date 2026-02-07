@@ -68,6 +68,18 @@ body {
   animation: gentle-pulse 2s ease-in-out infinite;
 }
 
+/* Ensure content is visible even without JavaScript */
+main > * {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Re-enable animations after JavaScript loads */
+.js-loaded main > * {
+  opacity: revert;
+  transform: revert;
+}
+
 /* Scrollbar styling */
 ::-webkit-scrollbar {
   width: 10px;

@@ -26,6 +26,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `document.documentElement.classList.add('js-loaded');`,
+          }}
+        />
+      </head>
       <body
         className={`${nunito.variable} ${poppins.variable} antialiased`}
       >
