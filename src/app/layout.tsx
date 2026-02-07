@@ -17,6 +17,14 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Happy Rose Day, Kana! 🌹",
   description: "A special Rose Day webpage for Kana",
+  robots: {
+    index: true,
+    follow: true,
+  },
+  other: {
+    'X-Content-Type-Options': 'nosniff',
+    'Referrer-Policy': 'strict-origin-when-cross-origin',
+  },
 };
 
 export default function RootLayout({
