@@ -36,6 +36,12 @@ jobs:
         env:
           NODE_ENV: production
 
+      - name: Ensure .nojekyll exists
+        run: |
+          if [ ! -f out/.nojekyll ]; then
+            touch out/.nojekyll
+          fi
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
