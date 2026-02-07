@@ -57,23 +57,6 @@ export default function Home() {
     setSparkles(sparkleData);
   }, []);
 
-  // Fallback: ensure content is visible if animations don't load
-  useEffect(() => {
-    // Small delay to ensure Framer Motion has a chance to animate
-    const timer = setTimeout(() => {
-      // Check if any content is still hidden and make it visible
-      const hiddenElements = document.querySelectorAll('[style*="opacity: 0"]');
-      if (hiddenElements.length > 0) {
-        hiddenElements.forEach((el) => {
-          if (el instanceof HTMLElement) {
-            el.style.opacity = '1';
-            el.style.transform = 'none';
-          }
-        });
-      }
-    }, 2000);
-    return () => clearTimeout(timer);
-  }, []);
 
   return (
     <div className="min-h-screen relative overflow-hidden">
@@ -108,10 +91,11 @@ export default function Home() {
       <main className="relative z-30 min-h-screen flex flex-col items-center justify-center px-4 py-20">
         {/* Hero Section */}
         <motion.div
-          initial={{ opacity: 0, y: -50 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-12"
+          style={{ opacity: 1 }}
         >
           <motion.h1
             className="text-6xl md:text-8xl font-bold mb-4 bg-gradient-to-r from-pink-500 via-rose-500 to-pink-600 bg-clip-text text-transparent float"
@@ -129,10 +113,11 @@ export default function Home() {
 
         {/* Animated Rose */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
+          initial={false}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.3, duration: 1, ease: [0.16, 1, 0.3, 1] }}
           className="mb-12"
+          style={{ opacity: 1 }}
         >
           <RoseCanvas />
         </motion.div>
@@ -151,10 +136,11 @@ export default function Home() {
 
         {/* Footer Message */}
         <motion.div
-          initial={{ opacity: 0 }}
+          initial={false}
           animate={{ opacity: 1 }}
           transition={{ delay: 2, duration: 1 }}
           className="mt-16 text-center"
+          style={{ opacity: 1 }}
         >
           <p className="text-pink-600 text-xl font-medium gentle-pulse">
             With all my love 💕

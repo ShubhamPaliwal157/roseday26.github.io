@@ -11,7 +11,7 @@ interface LoveMessageProps {
 export default function LoveMessage({ message, delay = 0, emoji = '🌹' }: LoveMessageProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20, scale: 0.9 }}
+      initial={false}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{
         duration: 0.6,
@@ -19,6 +19,7 @@ export default function LoveMessage({ message, delay = 0, emoji = '🌹' }: Love
         ease: [0.16, 1, 0.3, 1],
       }}
       className="bg-white/80 backdrop-blur-sm rounded-3xl p-6 shadow-lg border border-pink-200/50 max-w-md mx-auto mb-6 hover:shadow-xl transition-shadow"
+      style={{ opacity: 1 }}
     >
       <div className="flex items-start gap-3">
         <span className="text-3xl">{emoji}</span>
